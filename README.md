@@ -11,7 +11,7 @@ Every morning at 06:17 (SA time) GitHub runs this for free and:
 7. **Builds your posting desk** at `/today/`: open it on your phone, download each video, copy the caption, post to TikTok and Instagram.
 
 ## Your daily routine (about 10 minutes)
-1. Open `https://YOUR-USERNAME.github.io/affiliate-pipeline/today/` on your phone.
+1. Open `https://thinus794.github.io/affiliate-pipeline/today/` on your phone.
 2. For each video, tap **Download video**, then post it to TikTok and Instagram Reels and paste the matching caption.
 3. Once a week: tap **Download today's Pinterest CSV** and upload it in Pinterest → Create → Bulk create Pins.
 
@@ -26,8 +26,8 @@ Edit `data/products.csv`, or point the pipeline at a Google Sheet (see the setup
 | price | From about $400 |
 | program | xTool affiliate |
 | affiliate_url | your tracking link |
-| image_urls | product photo links separated by `|` (or put files in `assets/images/<id>-1.jpg`) |
-| key_points | 3-4 selling points separated by `|` |
+| image_urls | product photo links separated by a vertical bar (or put files in `assets/images/<id>-1.jpg`) |
+| key_points | 3-4 selling points separated by a vertical bar |
 | active | yes / no |
 
 The words for a product are saved in `content/<id>.json`; edit that file to change any script or caption. To have them rewritten, delete the file, or start a manual run with `--regen <id>`.
