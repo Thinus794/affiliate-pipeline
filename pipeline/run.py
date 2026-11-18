@@ -54,7 +54,17 @@ def main():
     cfg = load_config()
     products = load_products()
     if not products:
-        raise SystemExit("No active products in products.csv")
+        # Nothing to promote yet: publish a simple holding page so the run still succeeds.
+        print("No active products yet - publishing a 'coming soon' page. Add products and set active=yes.")
+        if BUILD.exists():
+            shutil.rmtree(BUILD)
+        BUILD.mkdir(parents=True)
+        (BUILD / "index.html").write_text(
+            f"<!doctype html><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'>"
+            f"<title>{cfg['site_name']}</title><body style='font-family:system-ui;background:#14161A;color:#fff;"
+            f"text-align:center;padding:80px 20px'><h1>{cfg['site_name']}</h1><p>{cfg['site_tagline']}</p>"
+            f"<p style='color:#F5A524'>New picks coming soon.</p></body>", encoding="utf-8")
+        return
     state = load_state()
     today = datetime.now(timezone.utc).date().isoformat()
     print(f"== Affiliate pipeline {today}: {len(products)} active products ==")
