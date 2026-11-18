@@ -1,0 +1,19 @@
+{
+  "site_name": "Thinus Picks",
+  "site_tagline": "Tools, tech and gadgets I'd actually buy",
+  "site_url": "https://thinus794.github.io/affiliate-pipeline",
+  "videos_per_day": 3,
+  "repeat_product_after_days": 14,
+  "voice": "en-ZA-LukeNeural",
+  "voice_rate": "+8%",
+  "currency_note": "Prices change - check the latest price on the store page.",
+  "disclosure": "Some links on this page are affiliate links. If you buy through them I may earn a small commission at no extra cost to you.",
+  "short_disclosure": "#ad Affiliate link in bio",
+  "niches": {
+    "tools": {"label": "Tools, DIY & Laser", "pinterest_board": "Laser & DIY Tools", "hashtags": ["#lasercutting", "#diytools", "#woodworking", "#makersgonnamake", "#workshop"]},
+    "tech": {"label": "Tech & AI Tools", "pinterest_board": "AI & Tech Tools", "hashtags": ["#aitools", "#techtok", "#productivity", "#ai", "#sidehustle"]},
+    "home": {"label": "Home & Gadgets", "pinterest_board": "Home Gadgets", "hashtags": ["#gadgets", "#homefinds", "#amazonfinds", "#homehacks", "#musthaves"]}
+  },
+  "brand_colors": {"bg": "#14161A", "accent": "#F5A524", "text": "#FFFFFF", "muted": "#B9BEC7"},
+  "gemini_model": "gemini-2.5-flash"
+}
