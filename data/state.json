@@ -1,0 +1,33 @@
+{
+  "posted": {
+    "xtool-f1": {
+      "last": "2026-11-18",
+      "count": 1
+    },
+    "tech-elevenlabs": {
+      "last": "2026-11-18",
+      "count": 1
+    },
+    "home-rotary-tool": {
+      "last": "2026-11-18",
+      "count": 1
+    }
+  },
+  "history": [
+    {
+      "date": "2026-11-18",
+      "id": "xtool-f1",
+      "youtube": ""
+    },
+    {
+      "date": "2026-11-18",
+      "id": "tech-elevenlabs",
+      "youtube": ""
+    },
+    {
+      "date": "2026-11-18",
+      "id": "home-rotary-tool",
+      "youtube": ""
+    }
+  ]
+}
