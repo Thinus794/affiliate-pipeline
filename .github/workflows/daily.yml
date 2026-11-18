@@ -1,0 +1,76 @@
+name: Daily affiliate content
+
+on:
+  schedule:
+    - cron: "17 4 * * *"      # every day 06:17 South African time (04:17 UTC)
+  workflow_dispatch:           # "Run workflow" button for a manual run
+    inputs:
+      count:
+        description: "How many videos (blank = config default)"
+        required: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install ffmpeg and fonts
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+
+      - run: pip install -r requirements.txt
+
+      - name: Cache product images
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: images-${{ hashFiles('data/products.csv') }}
+          restore-keys: images-
+
+      - name: Run pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PRODUCTS_CSV_URL: ${{ secrets.PRODUCTS_CSV_URL }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+        run: |
+          if [ -n "${{ github.event.inputs.count }}" ]; then
+            python -m pipeline.run --count "${{ github.event.inputs.count }}"
+          else
+            python -m pipeline.run
+          fi
+
+      - name: Save generated words and posting history
+        run: |
+          git config user.name "affiliate-bot"
+          git config user.email "affiliate-bot@users.noreply.github.com"
+          git add content data
+          git diff --cached --quiet || git commit -m "Daily run $(date -u +%F)"
+          git push
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+      - id: deploy
+        uses: actions/deploy-pages@v4
