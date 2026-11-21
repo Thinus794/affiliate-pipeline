@@ -1,16 +1,16 @@
 {
   "posted": {
     "xtool-f1": {
-      "last": "2026-11-20",
-      "count": 3
+      "last": "2026-11-21",
+      "count": 4
     },
     "tech-elevenlabs": {
-      "last": "2026-11-20",
-      "count": 3
+      "last": "2026-11-21",
+      "count": 4
     },
     "home-rotary-tool": {
-      "last": "2026-11-20",
-      "count": 3
+      "last": "2026-11-21",
+      "count": 4
     }
   },
   "history": [
@@ -56,6 +56,21 @@
     },
     {
       "date": "2026-11-20",
+      "id": "home-rotary-tool",
+      "youtube": ""
+    },
+    {
+      "date": "2026-11-21",
+      "id": "xtool-f1",
+      "youtube": ""
+    },
+    {
+      "date": "2026-11-21",
+      "id": "tech-elevenlabs",
+      "youtube": ""
+    },
+    {
+      "date": "2026-11-21",
       "id": "home-rotary-tool",
       "youtube": ""
     }
